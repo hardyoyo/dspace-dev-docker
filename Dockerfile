@@ -13,7 +13,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         openjdk-8-jdk \
         ant \
         maven \
-        unzip
+        unzip \
+        stow
 
 # Define commonly used JAVA_HOME variable
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
@@ -50,6 +51,10 @@ RUN mkdir /root/.m2
 #Configure colors and autocompletion
 COPY bashrc /root/.bashrc
 COPY bashrc /home/developer/.bashrc
+
+#copy inputrc for better command history searching
+COPY inputrc /root/.inputrc
+COPY inputrc /home/developer/.inputrc
 
 #Configure some useful aliases
 COPY bash_aliases /root/.bash_aliases
@@ -88,10 +93,10 @@ COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 #ENTRYPOINT ["/entrypoint.sh"]
 
+#TODO fix this
 #Install PSI Probe
-RUN wget https://github.com/psi-probe/psi-probe/releases/download/2.4.0/probe-2.4.0.zip -O probe.zip
-RUN unzip probe.zip
-# RUN mv probe.war $CATALINA_HOME/webapps/probe.war
+RUN wget https://github.com/psi-probe/psi-probe/releases/download/3.0.0.RC2/probe.war -O probe.war
+RUN mv probe.war $CATALINA_HOME/webapps/probe.war
 
 COPY conf $CATALINA_HOME/conf
 

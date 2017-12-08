@@ -1,6 +1,6 @@
 <Context 
-  docBase="/srv/dspace-src/dspace/modules/xmlui/target/xmlui-6.3-SNAPSHOT"
-  reloadable="true" 
+  docBase="/srv/dspace-src/dspace/modules/rest/target/rest-6.3-SNAPSHOT"
+  reloadable="true"
 >
 	<JarScanner scanClassPath="false" scanAllFiles="false" scanAllDirectories="false"/>
 	<Parameter name="dspace-config" override="false"
@@ -10,4 +10,9 @@
 	<Parameter name="dspace.dir" override="false"
 		value="/srv/dspace/"
 		description="Path to the DSpace home directory." />
+
+	<Parameter name="log4j.configuration" override="false"
+		value="/srv/dspace/config/log4j-solr.properties"
+		description="URL locating a Log4J configuration file (properties or XML).." />
+
 </Context>

@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   # Postgres database
   postgres:
@@ -29,6 +29,8 @@ services:
       - ./dspace-src:/srv/dspace-src
       - ./m2-repo:/home/developer/.m2
       - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./content:/home/developer/content
+      - ./dotfiles:/home/developer/dotfiles
     command: /bin/bash
     tty: true
     stdin_open: true
