@@ -93,8 +93,9 @@ COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 #ENTRYPOINT ["/entrypoint.sh"]
 
-#TODO fix this
-#Install PSI Probe
+#Install PSI Probe: WARNING, you will probably need to update the version number in the URL below
+# from time to time, Probe will stop working, usually after you update Tomcat to a newer version
+# or if you turn on something really fancy, like hot swapping
 RUN wget https://github.com/psi-probe/psi-probe/releases/download/3.0.0.RC2/probe.war -O probe.war
 RUN mv probe.war $CATALINA_HOME/webapps/probe.war
 
