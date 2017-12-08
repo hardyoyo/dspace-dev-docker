@@ -1,7 +1,7 @@
-	.lando.yml
-	dotfiles
-	dotfiles/
-	dspace-build/
-	dspace-src/
-	dspace-src
-	m2-repo/
+.lando.yml
+dotfiles
+dotfiles/
+dspace-build/
+dspace-src/
+dspace-src
+m2-repo/
