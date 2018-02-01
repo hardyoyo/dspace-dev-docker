@@ -15,17 +15,18 @@ deployments and better code hot-swapping.
 
 # Why?
 
-I believe that setting up a productive development environment for DSpace is non-trivial:
-The build system is 'OK' in the sense that it gets the job done, but it doesn't feel right for development. A lot of files get
-copied around, compressed, decompressed and compressed again.
+From this original creator of DSpace-dev-Docker, [Patricio Marrone](https://github.com/pmarrone):
+>I believe that setting up a productive development environment for DSpace is non-trivial:
+>The build system is 'OK' in the sense that it gets the job done, but it doesn't feel right for development. A lot of files get
+>copied around, compressed, decompressed and compressed again.
 
-Maven itself is not prone to doing things incrementally out of the box. IDEs can help but it steel feels hard to get an
-acceptable configuration that avoids full rebuilds. To top that, having the user running ant tasks after maven to get DSpace 
-running ensures that your IDE won't understand the full process.
+>Maven itself is not prone to doing things incrementally out of the box. IDEs can help but it steel feels hard to get an
+>acceptable configuration that avoids full rebuilds. To top that, having the user running ant tasks after maven to get DSpace 
+>running ensures that your IDE won't understand the full process.
 
-Anyway, it seems that there are lots of things that can be done to hasten the code -> build -> run -> test cycle but it's
-kind of messy to do it on your workstation. Having a container that keeps all this customizations in isolation should
-encourage experimenting with further tweaks.
+>Anyway, it seems that there are lots of things that can be done to hasten the code -> build -> run -> test cycle but it's
+>kind of messy to do it on your workstation. Having a container that keeps all this customizations in isolation should
+>encourage experimenting with further tweaks.
 
 # This works on Linux
 Docker works on Windows and MacOS too. Most of this 'should' work on Windows and MacOS. The major problem, I believe, are mounted folders. On linux, they just work. On Windows and MacOS, I'm not sure how they are mounted. Docker has been working to improve this integration, but I haven't tested any of this outside linux.
@@ -51,13 +52,17 @@ Right now, the major advantages of this build are
 # Launching
 - Clone this repo 
 
-        git clone https://github.com/pmarrone/dspace-dev-docker.git
+        git clone https://github.com/DSpace-Labs/dspace-dev-docker.git
         cd dspace-dev-docker
 
  - Add a dspace-src folder, where your DSpace code will reside. Also, add m2-repo and dspace-build folders.
 
         git clone -b dspace-6.0 https://github.com/DSpace/DSpace.git dspace-src
         mkdir m2-repo dspace-build
+
+NOTE: if you already have a working copy of DSpace checked out on your computer, a simple symlink of that would suffice:
+
+        ln -s /path/to/your/dspace/working/copy dspace-src
         
 You should end up with the folder structure that dspace-dev-docker expects:
 
